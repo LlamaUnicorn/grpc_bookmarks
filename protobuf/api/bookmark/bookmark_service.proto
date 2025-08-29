@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark;
+
+import "protobuf/api/bookmark/messages.proto";
+
+// Bookmarks service for managing bookmarks
+service Bookmark {
+  // CreateBookmark create a single bookmark
+  rpc CreateBookmark(CreateBookmarkRequest) returns (CreateBookmarkResponse);
+  // ListBookmarks return bookmarks filtered by a condition
+  rpc ListBookmarks(ListBookmarksRequest) returns (ListBookmarksResponse);
+}
