@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark;
 
-import "protobuf/api/bookmark/messages.proto";
+import "api/bookmark/messages.proto";
 
 // Bookmarks service for managing bookmarks
 service Bookmark {
