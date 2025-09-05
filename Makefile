@@ -14,7 +14,10 @@ BUF_BIN := $(LOCAL_BIN)/buf
 	$(info run buf generate...)
 	PATH="$(LOCAL_BIN):$(PATH)" $(BUF_BIN) generate
 
-generate: .buf-generate
+generate: .buf-generate .tidy
 
+.tidy:
+	go mod tidy
+ 
 .PHONY: \
 	.bin-deps

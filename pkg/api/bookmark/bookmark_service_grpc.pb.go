@@ -4,7 +4,7 @@
 // - protoc             (unknown)
 // source: api/bookmark/bookmark_service.proto
 
-package messages_proto
+package bookmark
 
 import (
 	context "context"

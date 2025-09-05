@@ -4,7 +4,7 @@ package github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark;
 
 import "api/bookmark/messages.proto";
 
-option go_package = "pkg/api/bookmark/messages.proto";
+option go_package = "pkg/api/bookmark";
 
 // Bookmarks service for managing bookmarks
 service Bookmark {

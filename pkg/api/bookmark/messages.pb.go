@@ -4,7 +4,7 @@
 // 	protoc        (unknown)
 // source: api/bookmark/messages.proto
 
-package messages_proto
+package bookmark
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -217,8 +217,8 @@ const file_api_bookmark_messages_proto_rawDesc = "" +
 	"\vbookmark_id\x18\x01 \x01(\x04R\n" +
 	"bookmarkId\"\x16\n" +
 	"\x14ListBookmarksRequest\"\x17\n" +
-	"\x15ListBookmarksResponseB\xf2\x02\n" +
-	"<com.github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmarkB\rMessagesProtoP\x01Z\x1fpkg/api/bookmark/messages.proto\xa2\x02\x06GLGPAB\xaa\x027Github.Llamaunicorn.GrpcBookmarks.Protobuf.Api.Bookmark\xca\x027Github\\Llamaunicorn\\GrpcBookmarks\\Protobuf\\Api\\Bookmark\xe2\x02CGithub\\Llamaunicorn\\GrpcBookmarks\\Protobuf\\Api\\Bookmark\\GPBMetadata\xea\x02<Github::Llamaunicorn::GrpcBookmarks::Protobuf::Api::Bookmarkb\x06proto3"
+	"\x15ListBookmarksResponseB\xe3\x02\n" +
+	"<com.github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmarkB\rMessagesProtoP\x01Z\x10pkg/api/bookmark\xa2\x02\x06GLGPAB\xaa\x027Github.Llamaunicorn.GrpcBookmarks.Protobuf.Api.Bookmark\xca\x027Github\\Llamaunicorn\\GrpcBookmarks\\Protobuf\\Api\\Bookmark\xe2\x02CGithub\\Llamaunicorn\\GrpcBookmarks\\Protobuf\\Api\\Bookmark\\GPBMetadata\xea\x02<Github::Llamaunicorn::GrpcBookmarks::Protobuf::Api::Bookmarkb\x06proto3"
 
 var (
 	file_api_bookmark_messages_proto_rawDescOnce sync.Once

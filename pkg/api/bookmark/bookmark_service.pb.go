@@ -4,7 +4,7 @@
 // 	protoc        (unknown)
 // source: api/bookmark/bookmark_service.proto
 
-package messages_proto
+package bookmark
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -27,8 +27,8 @@ const file_api_bookmark_bookmark_service_proto_rawDesc = "" +
 	"#api/bookmark/bookmark_service.proto\x128github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark\x1a\x1bapi/bookmark/messages.proto2\xf3\x02\n" +
 	"\bBookmark\x12\xb3\x01\n" +
 	"\x0eCreateBookmark\x12O.github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark.CreateBookmarkRequest\x1aP.github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark.CreateBookmarkResponse\x12\xb0\x01\n" +
-	"\rListBookmarks\x12N.github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark.ListBookmarksRequest\x1aO.github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark.ListBookmarksResponseB\xf9\x02\n" +
-	"<com.github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmarkB\x14BookmarkServiceProtoP\x01Z\x1fpkg/api/bookmark/messages.proto\xa2\x02\x06GLGPAB\xaa\x027Github.Llamaunicorn.GrpcBookmarks.Protobuf.Api.Bookmark\xca\x027Github\\Llamaunicorn\\GrpcBookmarks\\Protobuf\\Api\\Bookmark\xe2\x02CGithub\\Llamaunicorn\\GrpcBookmarks\\Protobuf\\Api\\Bookmark\\GPBMetadata\xea\x02<Github::Llamaunicorn::GrpcBookmarks::Protobuf::Api::Bookmarkb\x06proto3"
+	"\rListBookmarks\x12N.github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark.ListBookmarksRequest\x1aO.github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark.ListBookmarksResponseB\xea\x02\n" +
+	"<com.github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmarkB\x14BookmarkServiceProtoP\x01Z\x10pkg/api/bookmark\xa2\x02\x06GLGPAB\xaa\x027Github.Llamaunicorn.GrpcBookmarks.Protobuf.Api.Bookmark\xca\x027Github\\Llamaunicorn\\GrpcBookmarks\\Protobuf\\Api\\Bookmark\xe2\x02CGithub\\Llamaunicorn\\GrpcBookmarks\\Protobuf\\Api\\Bookmark\\GPBMetadata\xea\x02<Github::Llamaunicorn::GrpcBookmarks::Protobuf::Api::Bookmarkb\x06proto3"
 
 var file_api_bookmark_bookmark_service_proto_goTypes = []any{
 	(*CreateBookmarkRequest)(nil),  // 0: github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark.CreateBookmarkRequest
