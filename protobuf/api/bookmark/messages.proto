@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+// unique package names as the path, / => .
 package github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark;
 
 option go_package = "pkg/api/bookmark";
