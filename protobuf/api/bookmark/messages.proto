@@ -7,19 +7,19 @@ option go_package = "pkg/api/bookmark";
 
 // CreateBookmarkRequest request for bookmark creation
 message CreateBookmarkRequest{
-  // title of a bookmark
-  string title = 1;
+  // title of a bookmark, [json_options]
+  string title = 1 [json_name = "title"];
   // url of a bookmark
   // TODO Add validation
-  string url = 2;
+  string url = 2 [json_name = "url"];
   // TODO Add enum style field
-  string tag = 3;
+  string tag = 3 [json_name = "tag"];
 }
 
 // CreateBookmarkResponse response for bookmark creation
 message CreateBookmarkResponse{
   // bookmark_id id of a created bookmark
-  uint64 bookmark_id = 1;
+  uint64 bookmark_id = 1 [json_name = "bookmark_id"];
   //
 }
 

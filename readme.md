@@ -24,3 +24,6 @@
 9. touch ./cmd/bookmark/main.go
 10. start server, service and listener
 11. implement Bookmark methods Create and List in main.go
+12. create /cmd/client.go
+13. add json options to protobuf/messages.proto 
+14. regenerate new code
