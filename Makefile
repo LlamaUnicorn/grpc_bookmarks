@@ -1,3 +1,5 @@
+include vendor.proto.mk
+
 LOCAL_BIN := $(CURDIR)/bin
 
 BUF_BIN := $(LOCAL_BIN)/buf

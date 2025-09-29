@@ -25,5 +25,13 @@
 10. start server, service and listener
 11. implement Bookmark methods Create and List in main.go
 12. create /cmd/client.go
-13. add json options to protobuf/messages.proto 
+13. add [json options] to protobuf/messages.proto 
 14. regenerate new code
+15. Validation: protovalidate plugin 
+    1. Import validate.proto
+    2. Create new Makefile vendor.proto.mk .vendor-protovalidate
+    3. buf.yaml: - path: vendor.protobuf
+    4. Update makefile: include vendor.proto.mk
+    5. make vendor (you can run 'vendor' in editor)
+    6. Add validation to fields
+    7. make generate

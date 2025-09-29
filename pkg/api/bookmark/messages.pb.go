@@ -4,9 +4,12 @@
 // 	protoc        (unknown)
 // source: api/bookmark/messages.proto
 
+// unique package names as the path, / => .
+
 package bookmark
 
 import (
+	_ "buf.build/gen/go/bufbuild/protovalidate/protocolbuffers/go/buf/validate"
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
 	protoimpl "google.golang.org/protobuf/runtime/protoimpl"
 	reflect "reflect"
@@ -24,10 +27,12 @@ const (
 // CreateBookmarkRequest request for bookmark creation
 type CreateBookmarkRequest struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
-	// title of a bookmark
+	// title of a bookmark, [json_options]
 	Title string `protobuf:"bytes,1,opt,name=title,proto3" json:"title,omitempty"`
 	// url of a bookmark
 	// TODO Add validation
+	//
+	//	All fields are required. If they're not passed they get zero-value
 	Url string `protobuf:"bytes,2,opt,name=url,proto3" json:"url,omitempty"`
 	// TODO Add enum style field
 	Tag           string `protobuf:"bytes,3,opt,name=tag,proto3" json:"tag,omitempty"`
@@ -90,7 +95,7 @@ func (x *CreateBookmarkRequest) GetTag() string {
 type CreateBookmarkResponse struct {
 	state protoimpl.MessageState `protogen:"open.v1"`
 	// bookmark_id id of a created bookmark
-	BookmarkId    uint64 `protobuf:"varint,1,opt,name=bookmark_id,json=bookmarkId,proto3" json:"bookmark_id,omitempty"` //
+	BookmarkId    uint64 `protobuf:"varint,1,opt,name=bookmark_id,proto3" json:"bookmark_id,omitempty"` //
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -208,14 +213,16 @@ var File_api_bookmark_messages_proto protoreflect.FileDescriptor
 
 const file_api_bookmark_messages_proto_rawDesc = "" +
 	"\n" +
-	"\x1bapi/bookmark/messages.proto\x128github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark\"Q\n" +
-	"\x15CreateBookmarkRequest\x12\x14\n" +
-	"\x05title\x18\x01 \x01(\tR\x05title\x12\x10\n" +
-	"\x03url\x18\x02 \x01(\tR\x03url\x12\x10\n" +
-	"\x03tag\x18\x03 \x01(\tR\x03tag\"9\n" +
-	"\x16CreateBookmarkResponse\x12\x1f\n" +
-	"\vbookmark_id\x18\x01 \x01(\x04R\n" +
-	"bookmarkId\"\x16\n" +
+	"\x1bapi/bookmark/messages.proto\x128github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark\x1a\x1bbuf/validate/validate.proto\"u\n" +
+	"\x15CreateBookmarkRequest\x12 \n" +
+	"\x05title\x18\x01 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x03\x18\x80\x02R\x05title\x12\x1c\n" +
+	"\x03url\x18\x02 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x02R\x03url\x12\x1c\n" +
+	"\x03tag\x18\x03 \x01(\tB\n" +
+	"\xbaH\ar\x05\x10\x01\x18\x80\x10R\x03tag\":\n" +
+	"\x16CreateBookmarkResponse\x12 \n" +
+	"\vbookmark_id\x18\x01 \x01(\x04R\vbookmark_id\"\x16\n" +
 	"\x14ListBookmarksRequest\"\x17\n" +
 	"\x15ListBookmarksResponseB\xe3\x02\n" +
 	"<com.github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmarkB\rMessagesProtoP\x01Z\x10pkg/api/bookmark\xa2\x02\x06GLGPAB\xaa\x027Github.Llamaunicorn.GrpcBookmarks.Protobuf.Api.Bookmark\xca\x027Github\\Llamaunicorn\\GrpcBookmarks\\Protobuf\\Api\\Bookmark\xe2\x02CGithub\\Llamaunicorn\\GrpcBookmarks\\Protobuf\\Api\\Bookmark\\GPBMetadata\xea\x02<Github::Llamaunicorn::GrpcBookmarks::Protobuf::Api::Bookmarkb\x06proto3"

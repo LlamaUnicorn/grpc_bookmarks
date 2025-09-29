@@ -47,12 +47,16 @@ type Bookmark struct {
 type BookmarkService struct {
 	bookmark.UnimplementedBookmarkServer
 
+	//validator *protovalidate.Validator
 	storage map[uint64]*Bookmark
 	mx      sync.RWMutex
 }
 
+// TODO: probably messed up import of protovalidate
 func (s *BookmarkService) CreateBookmark(ctx context.Context, req *bookmark.CreateBookmarkRequest) (*bookmark.CreateBookmarkResponse, error) {
-
+	//if err := s.validator.Validate(req); err != nil {
+	//	return nil, err
+	//}
 	id := rand.Uint64()
 	bookmarkLocal := &Bookmark{
 		ID:    id,

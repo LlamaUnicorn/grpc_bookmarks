@@ -1,3 +1,4 @@
 .idea
 /bin
 /example_plain
+/vendor.protobuf

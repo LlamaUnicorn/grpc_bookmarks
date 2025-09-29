@@ -4,6 +4,8 @@
 // - protoc             (unknown)
 // source: api/bookmark/bookmark_service.proto
 
+// unique package names as the path, / => .
+
 package bookmark
 
 import (

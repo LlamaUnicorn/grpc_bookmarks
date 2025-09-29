@@ -3,17 +3,20 @@ syntax = "proto3";
 // unique package names as the path, / => .
 package github.llamaunicorn.grpc_bookmarks.protobuf.api.bookmark;
 
+import "buf/validate/validate.proto";
+
 option go_package = "pkg/api/bookmark";
 
 // CreateBookmarkRequest request for bookmark creation
 message CreateBookmarkRequest{
   // title of a bookmark, [json_options]
-  string title = 1 [json_name = "title"];
+  string title = 1 [json_name = "title", (buf.validate.field).string = {min_len: 3, max_len: 256}];
   // url of a bookmark
   // TODO Add validation
-  string url = 2 [json_name = "url"];
+  //  All fields are required. If they're not passed they get zero-value
+  string url = 2 [json_name = "url", (buf.validate.field).string = {min_len: 1, max_len: 256}];
   // TODO Add enum style field
-  string tag = 3 [json_name = "tag"];
+  string tag = 3 [json_name = "tag", (buf.validate.field).string = {min_len: 1, max_len: 2048}];
 }
 
 // CreateBookmarkResponse response for bookmark creation
