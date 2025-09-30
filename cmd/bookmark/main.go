@@ -9,6 +9,7 @@ import (
 	"net"
 	"sync"
 
+	"buf.build/go/protovalidate"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/reflection"
@@ -16,9 +17,17 @@ import (
 )
 
 func main() {
+	validator, err := protovalidate.New()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	server := grpc.NewServer()
 
-	service := &BookmarkService{storage: make(map[uint64]*Bookmark, 1)}
+	service := &BookmarkService{
+		storage:   make(map[uint64]*Bookmark, 1),
+		validator: validator,
+	}
 
 	bookmark.RegisterBookmarkServer(server, service)
 
@@ -47,16 +56,15 @@ type Bookmark struct {
 type BookmarkService struct {
 	bookmark.UnimplementedBookmarkServer
 
-	//validator *protovalidate.Validator
-	storage map[uint64]*Bookmark
-	mx      sync.RWMutex
+	validator protovalidate.Validator
+	storage   map[uint64]*Bookmark
+	mx        sync.RWMutex
 }
 
-// TODO: probably messed up import of protovalidate
 func (s *BookmarkService) CreateBookmark(ctx context.Context, req *bookmark.CreateBookmarkRequest) (*bookmark.CreateBookmarkResponse, error) {
-	//if err := s.validator.Validate(req); err != nil {
-	//	return nil, err
-	//}
+	if err := s.validator.Validate(req); err != nil {
+		return nil, err
+	}
 	id := rand.Uint64()
 	bookmarkLocal := &Bookmark{
 		ID:    id,
