@@ -63,8 +63,23 @@ type BookmarkService struct {
 
 func (s *BookmarkService) CreateBookmark(ctx context.Context, req *bookmark.CreateBookmarkRequest) (*bookmark.CreateBookmarkResponse, error) {
 	if err := s.validator.Validate(req); err != nil {
-		return nil, err
+		return nil, status.Error(codes.InvalidArgument, err.Error())
 	}
+
+	//if err := s.validator.Validate(req); err != nil {
+	//	st := status.New(codes.InvalidArgument, codes.InvalidArgument.String())
+	//	st, _ = st.WithDetails(&errdetails.BadRequest{
+	//		FieldViolations: []*errdetails.BadRequest_FieldViolation{
+	//			{
+	//				Field:       "request",
+	//				Description: err.Error(),
+	//			},
+	//		},
+	//	})
+	//
+	//	return nil, st.Err()
+	//}
+
 	id := rand.Uint64()
 	bookmarkLocal := &Bookmark{
 		ID:    id,

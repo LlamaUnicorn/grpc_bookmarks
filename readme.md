@@ -32,6 +32,14 @@
     2. Create new Makefile vendor.proto.mk .vendor-protovalidate
     3. buf.yaml: - path: vendor.protobuf
     4. Update makefile: include vendor.proto.mk
-    5. make vendor (you can run 'vendor' in editor)
+    5. make vendor (or you can run 'vendor' in editor)
     6. Add validation to fields
     7. make generate
+
+# Part 4: error handling
+
+1. Add errors and error codes in cmd/bookmark/main.go: 
+   1. Default: status.Error(codes.InvalidArgument, codes.InvalidArgument.String())
+   2. Below is more detailed option
+2. Add errors in cmd/client/main.go: switch status.Code(err){}. Check st.Details documentation in-code.
+3. Send invalid url to check the error handling (client/main.goj)
