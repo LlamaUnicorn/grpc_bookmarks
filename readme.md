@@ -43,3 +43,10 @@
    2. Below is more detailed option
 2. Add errors in cmd/client/main.go: switch status.Code(err){}. Check st.Details documentation in-code.
 3. Send invalid url to check the error handling (client/main.goj)
+
+# Part 5: middleware
+
+1. Add header := metadata.Pairs("header-key", "val") to server
+2. Add ctx, header, trailer and retrieve header in client
+   1. Send header in client
+   2. Update server to handle client headers

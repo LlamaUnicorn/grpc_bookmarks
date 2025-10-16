@@ -8,6 +8,7 @@ import (
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
 	"google.golang.org/grpc/credentials/insecure"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/status"
 	"google.golang.org/protobuf/encoding/protojson"
 )
@@ -20,12 +21,23 @@ func main() {
 
 	client := bookmark.NewBookmarkClient(conn)
 
-	resp, err := client.CreateBookmark(context.Background(), &bookmark.CreateBookmarkRequest{
+	ctx := context.Background()
+
+	req := &bookmark.CreateBookmarkRequest{
 		Title: "test bookmark",
 		//Url:   "",
 		Url: "https://ya.ru",
 		Tag: "search",
-	})
+	}
+
+	// client context
+	cctx := metadata.NewOutgoingContext(ctx, metadata.Pairs("client-header-key", "val"))
+
+	var headers, trailers = metadata.MD{}, metadata.MD{}
+	resp, err := client.CreateBookmark(cctx, req,
+		grpc.Header(&headers),
+		grpc.Trailer(&trailers),
+	)
 	if err != nil {
 		switch status.Code(err) {
 		case codes.InvalidArgument:
@@ -41,6 +53,7 @@ func main() {
 		}
 	}
 
+	log.Println("headers:", headers, "trailers:", trailers)
 	log.Println(resp.GetBookmarkId())
 
 	// Use protojson.Marshal() instead of a stlib json.Marshal()

@@ -12,6 +12,7 @@ import (
 	"buf.build/go/protovalidate"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/codes"
+	"google.golang.org/grpc/metadata"
 	"google.golang.org/grpc/reflection"
 	"google.golang.org/grpc/status"
 )
@@ -66,6 +67,11 @@ func (s *BookmarkService) CreateBookmark(ctx context.Context, req *bookmark.Crea
 		return nil, status.Error(codes.InvalidArgument, err.Error())
 	}
 
+	md, ok := metadata.FromIncomingContext(ctx)
+	if ok {
+		log.Println(md)
+	}
+
 	//if err := s.validator.Validate(req); err != nil {
 	//	st := status.New(codes.InvalidArgument, codes.InvalidArgument.String())
 	//	st, _ = st.WithDetails(&errdetails.BadRequest{
@@ -90,6 +96,20 @@ func (s *BookmarkService) CreateBookmark(ctx context.Context, req *bookmark.Crea
 	s.mx.Lock()
 	s.storage[id] = bookmarkLocal
 	s.mx.Unlock()
+
+	header := metadata.Pairs("header-key", "val")
+	//if err := grpc.SetHeader(ctx, header); err != nil {
+	//	... unlikely error
+	//}
+	err := grpc.SetHeader(ctx, header)
+	if err != nil {
+		return nil, err
+	}
+	err = grpc.SetTrailer(ctx, header)
+	if err != nil {
+		return nil, err
+	}
+
 	return &bookmark.CreateBookmarkResponse{
 		BookmarkId: id,
 	}, nil
